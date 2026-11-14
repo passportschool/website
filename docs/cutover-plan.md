@@ -45,7 +45,12 @@ No AAAA records exist. Current nameservers: `ns1.hover.com`, `ns2.hover.com` (Ho
 - After NS flip, mail issue → point Hover nameservers back (keep the Hover zone records untouched until step 7).
 - After site cutover, site issue → flip the two A records back to `98.84.249.20` (Lightsail untouched).
 
-## Staff CMS wiring (when Git host lands)
+## Infrastructure deployed 2026-11-14 (staging track)
+
+- **Cloudflare account**: school-owned, web@passportcharter.org; wrangler CLI authorized via OAuth (token on this machine only).
+- **Pages**: project `passportschool` (passportschool.pages.dev). Initially direct-upload; **recreated with GitHub Git integration** for auto-builds on every commit to `main` (CF cannot convert direct-upload → Git; delete + recreate is required — confirmed in CF docs).
+- **CMS auth worker**: `sveltia-cms-auth` at `https://sveltia-cms-auth.web-f67.workers.dev` — deployed from `C:\Users\spiegs\passport-infra\sveltia-cms-auth` (local clone of github.com/sveltia/sveltia-cms-auth). Config in its `wrangler.toml`: `ALLOWED_DOMAINS` = `passportschool.pages.dev, passportcharter.org, www.passportcharter.org`; `GITHUB_CLIENT_ID` = Iv23lie7vP7nfd7z2SeI; `GITHUB_CLIENT_SECRET` = set via `wrangler secret put` (value never in any file or chat). GitHub App (user-named, owned by `passportschool` account) installed on the `website` repo only; callback = `<worker>/callback`.
+- **Editing flow**: editor logs in at `/admin/` → GitHub App OAuth → edits commit to `main` (GPG-verified) → Cloudflare Pages rebuilds automatically.
 1. Org: school-owned. Members: outgoing MSP + incoming MSP (admin), office staff (write access via Sveltia login only).
 2. Set `backend.repo` in `public/admin/config.yml`, redeploy.
 3. Each editor: creates a free account on the Git host (one-time, 10-minute runbook), gets invited, logs in at `passportcharter.org/admin/`.
