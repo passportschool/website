@@ -68,16 +68,24 @@ collections:
           - { label: "Countdown date (last day of school)", name: countdownDate, widget: datetime, date_format: true, time_format: false }
           - { label: Homepage announcement, name: announcement, widget: text, required: false }
           - { label: Instagram URL, name: instagramUrl, widget: string, required: false }
+          - { label: "Hero headline (leave blank for \"Passport School\")", name: heroTitle, widget: string, required: false }
+          - { label: "Hero tagline (leave blank for the default)", name: heroSubtitle, widget: text, required: false }
+          - { label: "Hero photo — use the image editor to resize to ~2000px wide", name: heroImage, widget: image, required: false }
+          - label: Life at Passport photos
+            name: gallery
+            widget: list
+            required: false
+            field: { label: Photo, name: photo, widget: image }
   - name: pages
     label: Pages
     label_singular: page
     folder: src/content/pages
-    create: false
+    create: true
     extension: md
     sortable_fields: [title, updated]
     preview_path: /
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Content, name: body, widget: markdown }
-      - { label: URL path, name: path, widget: hidden }
-      - { label: Last updated date, name: updated, widget: hidden }
+      - { label: URL path, name: path, widget: hidden, required: false }
+      - { label: Last updated date, name: updated, widget: hidden, required: false }

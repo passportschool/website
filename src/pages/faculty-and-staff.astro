@@ -16,6 +16,13 @@ const depts = deptOrder.filter((d) => staff.some((s) => (s.data.dept || 'Staff')
 if (depts.length === 0 && staff.length) depts.push(staff[0].data.dept || 'Staff');
 
 const mods = import.meta.glob<{ default: ImageMetadata }>('/src/assets/staff/*.{jpg,jpeg,png,webp,avif}', { eager: true });
+// normalize CMS-uploaded image paths (may be stored with or without leading/public/ prefixes)
+const cmsImg = (p?: string): string | null => {
+  if (!p) return null;
+  let v = p.replace(/\\/g, '/').replace(/^public\//, '');
+  if (!v.startsWith('/')) v = '/' + v;
+  return v;
+};
 function photoFor(photo?: string): ImageMetadata | null {
   if (!photo) return null;
   const mod = mods[photo];
@@ -45,7 +52,7 @@ function photoFor(photo?: string): ImageMetadata | null {
                 {photo ? (
                   <Image src={photo} alt={s.data.title} widths={[240, 480]} sizes="(min-width: 74rem) 220px, 45vw" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
                 ) : s.data.photo ? (
-                  <img src={s.data.photo} alt={s.data.title} loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+                  <img src={cmsImg(s.data.photo) || s.data.photo} alt={s.data.title} loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
                 ) : (
                   <div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius);background:var(--maroon-wash);display:flex;align-items:center;justify-content:center;">
                     <span style="font-size:2.2rem;font-weight:700;color:var(--maroon);">{s.data.title.split(' ').map((w) => w[0]).slice(0, 2).join('')}</span>

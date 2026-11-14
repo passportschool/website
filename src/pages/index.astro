@@ -21,6 +21,20 @@ const monFmt = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC
 const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const countdownTarget = settings?.data.countdownDate ? fullFmt.format(settings.data.countdownDate) : null;
 
+// CMS-uploaded images can be stored in several path forms; normalize all of them
+const cmsImg = (p?: string): string | null => {
+  if (!p) return null;
+  let v = p.replace(/\\/g, '/').replace(/^public\//, '');
+  if (!v.startsWith('/')) v = '/' + v;
+  return v;
+};
+const heroImgUrl = cmsImg(settings?.data.heroImage);
+const heroTitle = settings?.data.heroTitle?.trim() || 'Passport School';
+const heroSubtitle = settings?.data.heroSubtitle?.trim() || 'An inclusive K–8 charter school in Orlando, where children of every ability learn together.';
+const gallery = (settings?.data.gallery || [])
+  .map((g) => cmsImg(g.photo))
+  .filter((v): v is string => Boolean(v));
+
 const igPicks = [
   '468003858_18352364545193961_8189814425083002978_nfull.webp',
   '469588148_18354293212193961_1138744982906498246_nfull.webp',
@@ -41,13 +55,15 @@ const igPicks = [
   )}
 
   <section class="hero" aria-labelledby="home-h">
-    <Image class="hero-photo" src={hero} alt="Students and families at Passport School" widths={[480, 768, 1200, 1600]} sizes="100vw" loading="eager" />
+    {heroImgUrl ? (
+      <img class="hero-photo" src={heroImgUrl} alt="Students and families at Passport School" loading="eager" />
+    ) : (
+      <Image class="hero-photo" src={hero} alt="Students and families at Passport School" widths={[480, 768, 1200, 1600]} sizes="100vw" loading="eager" />
+    )}
     <div class="hero-content">
       <div class="container">
-        <h1 id="home-h">Passport School</h1>
-        <p class="hero-sub">
-          An inclusive K–8 charter school in Orlando, where children of every ability learn together.
-        </p>
+        <h1 id="home-h">{heroTitle}</h1>
+        <p class="hero-sub">{heroSubtitle}</p>
         <div class="hero-actions">
           <a class="btn btn-light" href="/parents-2/enrollment-information/">Enrollment Information</a>
           <a class="btn btn-ghost-light" href="/parents/">For Parents</a>
@@ -170,11 +186,19 @@ const igPicks = [
         <h2 id="life-h">Life at Passport</h2>
         <p>Learning together — in the classroom, on the field, and everywhere in between.</p>
       </div>
-      <div class="photo-grid">
-        <Image src={life1} alt="Passport School students learning together" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
-        <Image src={life2} alt="Activities at Passport School" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
-        <Image src={life3} alt="Passport School community" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
-      </div>
+      {gallery.length > 0 ? (
+        <div class="photo-grid">
+          {gallery.map((src) => (
+            <img src={src} alt="Life at Passport School" loading="lazy" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+          ))}
+        </div>
+      ) : (
+        <div class="photo-grid">
+          <Image src={life1} alt="Passport School students learning together" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+          <Image src={life2} alt="Activities at Passport School" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+          <Image src={life3} alt="Passport School community" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+        </div>
+      )}
     </div>
   </section>
 

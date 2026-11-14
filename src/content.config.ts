@@ -37,6 +37,10 @@ const settings = defineCollection({
     countdownDate: z.coerce.date(),
     announcement: z.string().optional(),
     instagramUrl: z.string().optional(),
+    heroTitle: z.string().optional(),
+    heroSubtitle: z.string().optional(),
+    heroImage: z.string().optional(),
+    gallery: z.array(z.object({ photo: z.string() })).optional(),
   }),
 });
 
@@ -44,7 +48,7 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
-    path: z.string(),
+    path: z.string().optional(),
     updated: z.string().optional(),
   }),
 });

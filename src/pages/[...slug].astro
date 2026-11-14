@@ -5,7 +5,8 @@ import { getCollection, render } from 'astro:content';
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
   return pages.map((p) => ({
-    params: { slug: p.data.path.replace(/^\/+|\/+$/g, '') },
+    // CMS-created pages without an explicit path get /<filename>/ automatically
+    params: { slug: (p.data.path || `/${p.id}`).replace(/^\/+|\/+$/g, '') },
     props: { page: p },
   }));
 }
