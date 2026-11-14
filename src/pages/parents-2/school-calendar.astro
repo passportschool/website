@@ -1,11 +1,11 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
 const events = (await getCollection('events'))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .filter((e) => e.data.date.valueOf() >= Date.now() - 24 * 60 * 60 * 1000);
-const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <Base title="School Calendar" description="Passport School calendar — following the OCPS calendar, school hours, and board of directors meeting dates.">
@@ -42,8 +42,8 @@ const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric'
         {events.map((e) => (
           <div class="event-row">
             <div class="event-date" aria-hidden="true">
-              <span class="ed-day">{new Intl.DateTimeFormat('en-US', { day: 'numeric' }).format(e.data.date)}</span>
-              <span class="ed-mon">{new Intl.DateTimeFormat('en-US', { month: 'short' }).format(e.data.date)}</span>
+              <span class="ed-day">{new Intl.DateTimeFormat('en-US', { day: 'numeric', timeZone: 'UTC' }).format(e.data.date)}</span>
+              <span class="ed-mon">{new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' }).format(e.data.date)}</span>
             </div>
             <div class="event-body">
               <h3>{e.data.title}</h3>

@@ -50,6 +50,9 @@ a { color: var(--maroon); text-decoration-thickness: 1px; text-underline-offset:
 a:hover { color: var(--maroon-deep); }
 
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+/* white focus indicator on dark/maroon surfaces (WCAG 2.4.7) */
+.utility-bar :focus-visible, .site-footer :focus-visible, .page-band :focus-visible,
+.countdown-band :focus-visible, .hero :focus-visible { outline-color: #fff; }
 
 .skip-link {
   position: absolute; left: -999px; top: 0;

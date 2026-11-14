@@ -7,7 +7,7 @@ interface Props {
 }
 const { title, updated } = Astro.props;
 const updatedFmt = updated
-  ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(updated))
+  ? new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(updated))
   : null;
 ---
 

@@ -16,9 +16,9 @@ const news = (await getCollection('news'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 4);
 
-const dayFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric' });
-const monFmt = new Intl.DateTimeFormat('en-US', { month: 'short' });
-const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const dayFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric', timeZone: 'UTC' });
+const monFmt = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' });
+const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const countdownTarget = settings?.data.countdownDate ? fullFmt.format(settings.data.countdownDate) : null;
 
 const igPicks = [

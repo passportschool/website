@@ -7,5 +7,6 @@ export default defineConfig({
     // legacy WordPress hub slugs — keep URLs alive, point at the new directory pages
     '/parents-2': '/parents/',
     '/students-2': '/students/',
+    '/school-calendar': '/parents-2/school-calendar/',
   },
 });
