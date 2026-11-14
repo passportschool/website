@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T17:53:38Z",
+  "title": "Design System: Passport School",
+  "extensions": {
+    "colorMeta": {
+      "maroon": {
+        "role": "primary",
+        "displayName": "Passport Maroon",
+        "canonical": "#590304",
+        "tonalRamp": [
+          "#190503",
+          "#4d0001",
+          "#74211b",
+          "#98433a",
+          "#be655a",
+          "#e5877c",
+          "#ffb2a7",
+          "#ffe8e3"
+        ]
+      },
+      "maroon-deep": {
+        "role": "primary",
+        "displayName": "Deepened Maroon",
+        "canonical": "#3f0203",
+        "tonalRamp": [
+          "#160605",
+          "#480b09",
+          "#6a2b26",
+          "#8e4b44",
+          "#b36c64",
+          "#d98f86",
+          "#ffb3a9",
+          "#ffe8e5"
+        ]
+      },
+      "maroon-wash": {
+        "role": "primary",
+        "displayName": "Maroon Wash",
+        "canonical": "#f7ecec",
+        "tonalRamp": [
+          "#0d0a0a",
+          "#2b2323",
+          "#484040",
+          "#685f5f",
+          "#898080",
+          "#aca2a2",
+          "#d1c6c6",
+          "#f1eded"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#241b1d",
+        "tonalRamp": [
+          "#0d0a0b",
+          "#2b2224",
+          "#493f41",
+          "#695e60",
+          "#8b7f81",
+          "#aea1a4",
+          "#d2c5c8",
+          "#f1edee"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#5d5254",
+        "tonalRamp": [
+          "#0d0a0b",
+          "#2c2224",
+          "#493f41",
+          "#695e60",
+          "#8b7f81",
+          "#aea1a4",
+          "#d2c5c8",
+          "#f1edee"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Warm Surface",
+        "canonical": "#f7f5f3",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#262523",
+          "#434240",
+          "#62615f",
+          "#848280",
+          "#a6a5a3",
+          "#cbc9c7",
+          "#efeeee"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e7e1de",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#282422",
+          "#46413e",
+          "#65605d",
+          "#86817e",
+          "#a9a4a1",
+          "#cec8c5",
+          "#f0eeed"
+        ]
+      },
+      "focus": {
+        "role": "primary",
+        "displayName": "Focus Maroon",
+        "canonical": "#590304",
+        "tonalRamp": [
+          "#190503",
+          "#4d0001",
+          "#74211b",
+          "#98433a",
+          "#be655a",
+          "#e5877c",
+          "#ffb2a7",
+          "#ffe8e3"
+        ]
+      },
+      "input-border": {
+        "role": "neutral",
+        "displayName": "Field Border",
+        "canonical": "#cfc7c3",
+        "tonalRamp": [
+          "#0c0b0a",
+          "#2a2421",
+          "#47403d",
+          "#67605c",
+          "#88817d",
+          "#aba39f",
+          "#cfc7c3",
+          "#f0eeed"
+        ]
+      },
+      "input-border-hover": {
+        "role": "neutral",
+        "displayName": "Field Border Hover",
+        "canonical": "#b9aeaa",
+        "tonalRamp": [
+          "#0d0b0a",
+          "#2b2320",
+          "#49403c",
+          "#695f5b",
+          "#8a807c",
+          "#ada29e",
+          "#d2c6c2",
+          "#f1eeec"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (H1)",
+        "purpose": "Page and hero headlines — white on the maroon page band or hero photo."
+      },
+      "headline": {
+        "displayName": "Headline (H2)",
+        "purpose": "Section headings on paper and surface grounds."
+      },
+      "title": {
+        "displayName": "Title (H3)",
+        "purpose": "Card, event, and staff headings; cards tighten to 1.08rem."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text, 17px at 1.65; prose capped at 68ch."
+      },
+      "label": {
+        "displayName": "Micro-label",
+        "purpose": "Uppercase tracked labels: event months, countdown units, footer column heads."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(36, 27, 29, 0.06), 0 1px 3px rgba(36, 27, 29, 0.08)",
+        "purpose": "Resting depth for cards, photos, map frame, form card. Ink-tinted, barely there."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 2px 4px rgba(36, 27, 29, 0.06), 0 6px 16px rgba(36, 27, 29, 0.1)",
+        "purpose": "Interaction lift: card hover (paired with translateY(-2px)), open nav dropdowns, mobile nav panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-150",
+        "value": "150ms ease-out",
+        "purpose": "Default state transition for buttons, cards (shadow/transform), nav toggles and caret."
+      },
+      {
+        "name": "ease-out-200",
+        "value": "200ms ease-out",
+        "purpose": "Instagram tile hover zoom (scale 1.05)."
+      },
+      {
+        "name": "reduced-motion-collapse",
+        "value": "animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto",
+        "purpose": "All motion collapses under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "nav",
+        "value": "940px"
+      },
+      {
+        "name": "footer",
+        "value": "900px"
+      },
+      {
+        "name": "split",
+        "value": "800px"
+      },
+      {
+        "name": "ig-strip",
+        "value": "700px"
+      },
+      {
+        "name": "footer-stack",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action on light ground: header Enrollment CTA and form submits. Maroon fill, white text, deepens on hover.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Enrollment</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 1rem; font-weight: 600; padding: 0.72rem 1.35rem; border-radius: var(--radius-sm); border: 2px solid transparent; cursor: pointer; text-decoration: none; line-height: 1.2; transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out; } .ds-btn-primary { background: var(--maroon); color: #fff; } .ds-btn-primary:hover { background: var(--maroon-deep); color: #fff; } .ds-btn-primary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Mid-page secondary CTA on paper/surface ground: transparent fill, 2px maroon border, fills with maroon wash on hover.",
+      "html": "<a class=\"ds-btn ds-btn-outline\" href=\"#\">About our school</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 1rem; font-weight: 600; padding: 0.72rem 1.35rem; border-radius: var(--radius-sm); border: 2px solid transparent; cursor: pointer; text-decoration: none; line-height: 1.2; transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out; } .ds-btn-outline { background: transparent; color: var(--maroon); border-color: var(--maroon); } .ds-btn-outline:hover { background: var(--maroon-wash); color: var(--maroon-deep); } .ds-btn-outline:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "The hero's primary action over the photo scrim: paper fill, maroon text, warms to surface on hover.",
+      "html": "<a class=\"ds-btn ds-btn-light\" href=\"#\">Enrollment Information</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 1rem; font-weight: 600; padding: 0.72rem 1.35rem; border-radius: var(--radius-sm); border: 2px solid transparent; cursor: pointer; text-decoration: none; line-height: 1.2; transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out; } .ds-btn-light { background: #fff; color: var(--maroon); } .ds-btn-light:hover { background: var(--surface); color: var(--maroon-deep); } .ds-btn-light:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost-Light Button",
+      "kind": "button",
+      "refersTo": "button-ghost-light",
+      "description": "The hero's secondary action over the photo scrim: translucent white fill and border, solidifies on hover.",
+      "html": "<a class=\"ds-btn ds-btn-ghost-light\" href=\"#\">For Parents</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; font-size: 1rem; font-weight: 600; padding: 0.72rem 1.35rem; border-radius: var(--radius-sm); border: 2px solid transparent; cursor: pointer; text-decoration: none; line-height: 1.2; transition: background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out; } .ds-btn-ghost-light { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.65); } .ds-btn-ghost-light:hover { background: rgba(255,255,255,0.18); color: #fff; } .ds-btn-ghost-light:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form fields inside the form card: paper fill, darker-than-hairline border, maroon focus ring plus border.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Email <span class=\"ds-req\">*</span></span><input class=\"ds-input\" type=\"email\" /></label>",
+      "css": ".ds-field { display: block; margin-bottom: 1.15rem; } font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; .ds-field-label { display: block; font-weight: 600; margin-bottom: 0.35rem; font-size: 0.97rem; color: var(--ink); } .ds-req { color: var(--maroon); } .ds-input { width: 100%; font-family: inherit; font-size: 1rem; color: var(--ink); padding: 0.65rem 0.8rem; border: 1px solid #cfc7c3; border-radius: var(--radius-sm); background: var(--paper); } .ds-input:hover { border-color: #b9aeaa; } .ds-input:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; border-color: var(--maroon); }"
+    },
+    {
+      "name": "Primary Navigation",
+      "kind": "nav",
+      "refersTo": "page-band",
+      "description": "Grouped header dropdown (For Parents / For Students / Our School): 600-weight toggle with rotating caret, paper panel with shadow-md, wash-filled links.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><ul class=\"ds-nav-list\"><li class=\"ds-nav-group\"><button class=\"ds-nav-toggle\" type=\"button\">For Parents <svg class=\"ds-caret\" viewBox=\"0 0 10 10\" aria-hidden=\"true\"><path d=\"M1 3l4 4 4-4z\"/></svg></button><ul class=\"ds-nav-drop\"><li><a href=\"#\">School Calendar</a></li><li><a href=\"#\">Enrollment Information</a></li><li><a href=\"#\">Title I Information</a></li></ul></li></ul></nav>",
+      "css": "font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; .ds-nav-list { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; } .ds-nav-group { position: relative; } .ds-nav-toggle { font-family: inherit; font-size: 1rem; font-weight: 600; color: var(--ink); background: none; border: 0; padding: 0.6rem 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; border-radius: var(--radius-sm); } .ds-caret { width: 10px; height: 10px; fill: var(--ink-soft); transition: transform 150ms ease-out; } .ds-nav-toggle:hover, .ds-nav-group:hover .ds-caret, .ds-nav-group:focus-within .ds-caret { background: var(--surface); transform: rotate(180deg); } .ds-nav-group:hover .ds-nav-toggle, .ds-nav-group:focus-within .ds-nav-toggle { background: var(--surface); } .ds-nav-group:hover .ds-caret, .ds-nav-group:focus-within .ds-caret { transform: rotate(180deg); } .ds-nav-drop { display: none; position: absolute; top: 100%; left: 0; min-width: 15rem; z-index: 50; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 2px 4px rgba(36,27,29,0.06), 0 6px 16px rgba(36,27,29,0.1); padding: 0.5rem; margin: 0; list-style: none; } .ds-nav-group:hover .ds-nav-drop, .ds-nav-group:focus-within .ds-nav-drop { display: block; } .ds-nav-drop a { display: block; padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); color: var(--ink); text-decoration: none; font-weight: 500; font-size: 0.97rem; } .ds-nav-drop a:hover, .ds-nav-drop a:focus-visible { background: var(--maroon-wash); color: var(--maroon-deep); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The universal content card: paper fill, hairline border, 10px radius, resting shadow, hover lift.",
+      "html": "<article class=\"ds-card\"><h3>Board of Directors Meetings</h3><p>3rd Tuesday of every month, 5:30 PM in the Cafeteria.</p></article>",
+      "css": "font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; .ds-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; box-shadow: 0 1px 2px rgba(36,27,29,0.06), 0 1px 3px rgba(36,27,29,0.08); transition: box-shadow 150ms ease-out, transform 150ms ease-out; } .ds-card:hover { box-shadow: 0 2px 4px rgba(36,27,29,0.06), 0 6px 16px rgba(36,27,29,0.1); transform: translateY(-2px); } .ds-card h3 { font-size: 1.08rem; font-weight: 600; line-height: 1.2; color: var(--ink); margin: 0 0 0.35em; } .ds-card p { color: var(--ink-soft); font-size: 0.97rem; margin: 0; } .ds-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }"
+    },
+    {
+      "name": "Event Date Chip",
+      "kind": "chip",
+      "refersTo": "date-chip",
+      "description": "The maroon date block leading every event row: day at 1.35rem/700 over an uppercase tracked month.",
+      "html": "<div class=\"ds-date-chip\" aria-hidden=\"true\"><span class=\"ds-ed-day\">24</span><span class=\"ds-ed-mon\">Nov</span></div>",
+      "css": "font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; .ds-date-chip { width: 3.4rem; text-align: center; border-radius: var(--radius-sm); background: var(--maroon); color: #fff; padding: 0.35rem 0.25rem; line-height: 1.1; } .ds-ed-day { display: block; font-size: 1.35rem; font-weight: 700; } .ds-ed-mon { display: block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }"
+    },
+    {
+      "name": "Staff Card",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Centered 4:5 staff portrait; when no photo exists, a maroon-wash tile carries the person's initials. Role line in maroon.",
+      "html": "<div class=\"ds-staff-card\"><div class=\"ds-staff-photo\"><span class=\"ds-staff-initials\">AV</span></div><h3>Alex Vargas</h3><p class=\"ds-staff-role\">Front Office</p></div>",
+      "css": "font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; .ds-staff-card { text-align: center; } .ds-staff-photo { width: 100%; aspect-ratio: 4 / 5; border-radius: var(--radius); background: var(--maroon-wash); display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(36,27,29,0.06), 0 1px 3px rgba(36,27,29,0.08); } .ds-staff-initials { font-size: 2.2rem; font-weight: 700; color: var(--maroon); } .ds-staff-card h3 { font-size: 1.02rem; font-weight: 600; line-height: 1.2; color: var(--ink); margin: 0.8em 0 0.1em; } .ds-staff-role { color: var(--maroon); font-size: 0.92rem; font-weight: 500; margin: 0 0 0.4em; }"
+    },
+    {
+      "name": "Countdown Band",
+      "kind": "custom",
+      "refersTo": "page-band",
+      "description": "Maroon strip counting to the CMS-set last day of school: 2.4rem tabular numerals over uppercase tracked labels.",
+      "html": "<section class=\"ds-countdown\" aria-label=\"Countdown to the last day of school\"><div class=\"ds-countdown-inner\"><p class=\"ds-cd-title\">Last Day of School <small>May 28, 2027</small></p><div class=\"ds-cd-ticks\"><div class=\"ds-cd-tick\"><div class=\"ds-cd-num\">196</div><div class=\"ds-cd-lab\">Days</div></div><div class=\"ds-cd-tick\"><div class=\"ds-cd-num\">14</div><div class=\"ds-cd-lab\">Hours</div></div><div class=\"ds-cd-tick\"><div class=\"ds-cd-num\">32</div><div class=\"ds-cd-lab\">Minutes</div></div><div class=\"ds-cd-tick\"><div class=\"ds-cd-num\">08</div><div class=\"ds-cd-lab\">Seconds</div></div></div></div></section>",
+      "css": "font-family: 'Barlow', 'Segoe UI', system-ui, -apple-system, sans-serif; .ds-countdown { background: var(--maroon); color: #fff; padding-block: clamp(2rem, 2.5rem + 1.5vw, 3.25rem); } .ds-countdown-inner { display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap; justify-content: space-between; padding-inline: 1.25rem; } .ds-cd-title { font-size: 1.3rem; font-weight: 600; margin: 0; } .ds-cd-title small { display: block; font-weight: 400; font-size: 0.95rem; color: rgba(255,255,255,0.8); margin-top: 0.2em; } .ds-cd-ticks { display: flex; gap: 1.25rem; } .ds-cd-tick { text-align: center; min-width: 3.6rem; } .ds-cd-num { font-size: 2.4rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; } .ds-cd-lab { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); margin-top: 0.3em; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Trusted Front Door",
+    "overview": "Passport School's site is the canon modern district site at full fidelity: the Apptegy/Edlio-class register the owner chose deliberately on 2026-11-14 over thematic or art-directed worlds. A parent lands on a real photograph of the school, reads the mission in plain sight, and reaches news, events, enrollment, or the parent hub in one scroll and zero thought. Credibility comes from type scale, spacing discipline, and real photography — not from decoration. The site is the school's front door, and the front office knows every family: the design's job is to feel that reliable.\n\nThe system is one warm world with one voice. A deep oxblood maroon carries every structural and active moment — utility bar, page bands, buttons, links, date chips, the footer — while everything else sits on warm whites (pure paper alternating with a warm-tinted surface) and warm near-black ink. Barlow does all the talking in four weights, large and plain, with tight tracking on display sizes and uppercase reserved for tiny tracked labels. Cards, chips, and photos all round to the same two radii, so every page reads as the same hand.\n\nAccessibility is a load-bearing wall, not a feature: WCAG 2.1 AA (the school's mission is inclusion; the site must practice it), measured text contrast of 7.5–17.2:1 across the system's pairs, a skip link, white focus indicators on every dark band, and motion that collapses under prefers-reduced-motion. Confirmed visual rejections: thematic art direction, template noise, second hues, decorative illustration, stock photography.",
+    "keyCharacteristics": [
+      "Warm white ground (paper #ffffff alternating with surface #f7f5f3) with warm ink text (#241b1d)",
+      "A single brand hue — deep maroon #590304 — spent on structure and action, never on large content areas",
+      "Barlow only (weights 400/500/600/700), big clear type, negative tracking on display sizes, uppercase only on micro-labels",
+      "Two radii (10px containers, 6px controls), two shadows (resting shadow-sm, hover shadow-md), hairline borders (#e7e1de)",
+      "Real school photography through the astro:assets pipeline; standard components (utility bar, grouped nav, hero, card grids, fat footer) at high polish",
+      "WCAG 2.1 AA throughout: 3px maroon focus rings that flip to white on dark bands, tabular numerals in the countdown, 68ch reading measure",
+      "One system across all 24 pages: maroon page band → alternating sections → deep-maroon 4-column footer"
+    ],
+    "rules": [
+      {
+        "name": "The One Hue Rule",
+        "body": "Maroon is the only hue on any screen. If a color can't be named \"maroon,\" \"warm white,\" or \"warm ink,\" it doesn't belong on the site.",
+        "section": "colors"
+      },
+      {
+        "name": "The White Focus Rule",
+        "body": "Every focus indicator on a maroon or deep-maroon surface (utility bar, page band, countdown, footer, hero) flips to white (outline-color: #fff) so it stays visible on the dark ground — WCAG 2.4.7.",
+        "section": "colors"
+      },
+      {
+        "name": "The Uppercase Budget Rule",
+        "body": "Uppercase is reserved for micro-labels (0.72–0.95rem, 600 weight, +0.06–0.08em tracking). Headings and sentences stay in sentence case; nothing large is ever uppercase.",
+        "section": "typography"
+      },
+      {
+        "name": "The Alternating Ground Rule",
+        "body": "Consecutive content sections alternate paper (#ffffff) and warm surface (#f7f5f3) — never two of the same ground in a row, and never a border where a ground change can do the work.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-at-Rest Rule",
+        "body": "Nothing rests above shadow-sm. The shadow-md lift appears only in response to interaction (hover, open state), and cards always pair it with translateY(-2px).",
+        "section": "elevation"
+      },
+      {
+        "name": "The Two Radii Rule",
+        "body": "Every rounded thing is 10px (container) or 6px (control). If a corner needs another number, the component is wrong.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do spend maroon on structure and action only — utility bar, page bands, buttons, links, date chips, countdown, footer — never as a large content ground.",
+      "Do flip :focus-visible to white (outline-color: #fff) on every maroon or deep-maroon surface: utility bar, page band, countdown, footer, hero.",
+      "Do use real school photography through the astro:assets pipeline (responsive widths, sizes, lazy except the hero) — never stock, never illustration.",
+      "Do render every date through UTC-pinned Intl.DateTimeFormat formatters (timeZone: 'UTC').",
+      "Do keep prose within the 68ch measure; section intros at 60ch.",
+      "Do give cards the resting shadow only, adding the hover lift (shadow-md + translateY(-2px)) on interaction.",
+      "Do use Barlow at 400/500/600/700 with tight tracking on display sizes (−0.02em H1, −0.01em H2).",
+      "Do preserve every existing URL path; retire one only with a true 301 (public/_redirects).",
+      "Do collapse all animation and transition durations under prefers-reduced-motion: reduce."
+    ],
+    "donts": [
+      "Don't introduce a second hue, gradient decoration, or thematic motifs — the register is the conventional modern district site, chosen over art-directed worlds.",
+      "Don't uppercase sentences or headings; uppercase belongs to 0.72–0.95rem tracked micro-labels.",
+      "Don't use shadows beyond the two tokens, or shadow-md on resting content.",
+      "Don't use any radius besides 10px (containers) and 6px (controls).",
+      "Don't invent staff, events, photos, or claims — real content only, published by the front office.",
+      "Don't use another focus treatment: 3px solid maroon, 2px offset (white on dark bands), nothing else.",
+      "Don't add a second typeface or a display font pairing — Barlow is the whole system."
+    ]
+  }
+}
