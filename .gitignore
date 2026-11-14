@@ -1,0 +1,27 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# secrets / keys — never commit
+*.pem
+*.key
+*.ppk
+
+# raw exports (DB dumps, uploads archives) — kept locally only
+data/export/
+*.sql
+*.sql.gz
+
+# macOS
+.DS_Store

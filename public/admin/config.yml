@@ -1,0 +1,57 @@
+# Sveltia CMS configuration — staff-facing editor at /admin/
+# Docs: https://sveltiacms.app/docs/
+# NOTE: after the school-owned GitHub org exists, update `backend.repo`.
+site_url: https://www.passportcharter.org
+locale: en
+backend:
+  name: github
+  repo: SCHOOL-ORG-PLACEHOLDER/passportschool
+  branch: main
+media_folder: public/uploads
+public_folder: /uploads
+collections:
+  - name: news
+    label: News
+    label_singular: news item
+    folder: src/content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: /
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: true, time_format: false }
+      - { label: Photo, name: image, widget: image, required: false }
+      - { label: Story, name: body, widget: markdown, required: false }
+  - name: events
+    label: Events
+    folder: src/content/events
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: /
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: true, time_format: false }
+      - { label: Location, name: location, widget: string, required: false }
+      - { label: Details, name: body, widget: markdown, required: false }
+  - name: staff
+    label: Faculty & Staff
+    folder: src/content/staff
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: Role, name: role, widget: string, required: false }
+      - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Bio, name: body, widget: markdown, required: false }
+  - name: settings
+    label: Site Settings
+    files:
+      - name: site
+        label: Site Settings
+        file: src/content/settings/site.md
+        fields:
+          - { label: "Countdown date (last day of school)", name: countdownDate, widget: datetime, date_format: true, time_format: false }
+          - { label: Homepage announcement, name: announcement, widget: text, required: false }
+          - { label: Instagram URL, name: instagramUrl, widget: string, required: false }

@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+// Phase 2 (design refresh) replaces this placeholder homepage.
+// Content here is real (migrated from the current site); presentation is deliberately minimal.
+
+const settings = (await getCollection('settings'))[0];
+const events = (await getCollection('events'))
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .filter((e) => e.data.date.valueOf() >= Date.now() - 24 * 60 * 60 * 1000)
+  .slice(0, 6);
+
+const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<Base title="Passport School">
+  <header>
+    <p><strong>Passport School</strong> — an inclusive K–8 charter school in Orlando, Florida</p>
+  </header>
+  <main id="content">
+    <h1>Our Mission</h1>
+    <p>
+      The mission of the Passport School, Inc. is to provide instruction to students in Kindergarten
+      through 8th grade based on the individual needs of children in an inclusive environment where
+      children with disabilities are educated with their non-disabled peers. The school will achieve
+      its mission through low student teacher ratios, cooperative learning, multi-sensory hands-on
+      learning, frequent assessment and extensive networking with parents, faculty, administration,
+      staff, friends and businesses within the community.
+    </p>
+
+    <h2>Core Philosophy</h2>
+    <p>
+      The Core Philosophy of the Passport School, Inc. is to provide an inclusive environment where
+      children can strive to be successful and learn to accept each other’s differences while working
+      together. Faculty, staff, administrators and parents will work together to provide academic and
+      social guidance.
+    </p>
+
+    {settings?.data.announcement && (
+      <p role="status"><strong>Announcement:</strong> {settings.data.announcement}</p>
+    )}
+
+    <h2>Upcoming Events</h2>
+    <ul>
+      {events.map((e) => (
+        <li>
+          <strong>{fmt.format(e.data.date)}</strong> — {e.data.title}
+        </li>
+      ))}
+    </ul>
+  </main>
+  <footer>
+    <p>
+      <a href="https://getfortifyfl.com/" rel="noopener">FortifyFL</a> — report suspicious activity to
+      law enforcement and school officials.
+    </p>
+  </footer>
+</Base>

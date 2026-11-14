@@ -1,0 +1,15 @@
+{
+  "name": "passport-school",
+  "version": "0.1.0",
+  "description": "Passport School (passportcharter.org) — static rebuild exiting WordPress. Astro + Sveltia CMS + Cloudflare Pages.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}
