@@ -56,4 +56,4 @@ If you have any questions or concerns regarding this Privacy Policy, please cont
 **Passport School Inc**
 5221 Curry Ford Road Orlando, FL 32822
 office@passportcharter.org
-[(407) 658-9900](https://www.google.com/search?q=passport+school&oq=passport+school&gs_lcrp=EgRlZGdlKgkIABBFGDsYgAQyCQgAEEUYOxiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIGCAYQRRg8MgYIBxBFGDwyBggIEEUYPNIBCDQxMzhqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8#)
+[(407) 658-9900](tel:+1-407-658-9900)
