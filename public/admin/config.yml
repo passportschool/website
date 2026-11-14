@@ -68,3 +68,16 @@ collections:
           - { label: "Countdown date (last day of school)", name: countdownDate, widget: datetime, date_format: true, time_format: false }
           - { label: Homepage announcement, name: announcement, widget: text, required: false }
           - { label: Instagram URL, name: instagramUrl, widget: string, required: false }
+  - name: pages
+    label: Pages
+    label_singular: page
+    folder: src/content/pages
+    create: false
+    extension: md
+    sortable_fields: [title, updated]
+    preview_path: /
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Content, name: body, widget: markdown }
+      - { label: URL path, name: path, widget: hidden }
+      - { label: Last updated date, name: updated, widget: hidden }
