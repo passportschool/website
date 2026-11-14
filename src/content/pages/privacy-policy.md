@@ -5,7 +5,6 @@ updated: "2025-02-10"
 ---
 
 #### **Privacy Policy**
-**Last Updated: 01/10/2025**
 
 #### **1. Introduction**
 Welcome to **Passport School Inc** ("Company," "we," "our," "us"). Your privacy is important to us, and we are committed to protecting your personal information. This Privacy Policy explains how we collect, use, share, and protect your information.
