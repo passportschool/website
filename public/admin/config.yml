@@ -7,6 +7,7 @@ backend:
   name: github
   repo: passportschool/website
   branch: main
+  base_url: https://sveltia-cms-auth.web-f67.workers.dev
 media_folder: public/uploads
 public_folder: /uploads
 collections:
