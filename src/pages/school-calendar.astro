@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const events = (await getCollection('events'))
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+  .filter((e) => e.data.date.valueOf() >= Date.now() - 24 * 60 * 60 * 1000);
+const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+---
+
+<Base title="School Calendar" description="Passport School calendar — following the OCPS calendar, school hours, and board of directors meeting dates.">
+  <div class="page-band">
+    <div class="container">
+      <h1>School Calendar</h1>
+      <p>We follow the Orange County Public Schools (OCPS) district calendar.</p>
+    </div>
+  </div>
+  <div class="container section">
+    <div class="card-grid-3 card-grid" style="margin-bottom:3rem;">
+      <div class="card">
+        <h3>2026–2027 OCPS Calendar</h3>
+        <p>Passport School follows the OCPS district calendar.</p>
+        <a class="card-link" href="https://drive.google.com/file/d/1ZzpJepKHf3L77XzZvE6gyyRQeny4V8mG/view?usp=sharing" target="_blank" rel="noopener">Open the calendar (Google Drive)</a>
+      </div>
+      <div class="card">
+        <h3>School Hours</h3>
+        <p>Monday through Friday<br />8:25 AM – 2:30 PM</p>
+      </div>
+      <div class="card">
+        <h3>Board of Directors Meetings</h3>
+        <p>3rd Tuesday of every month<br />5:30 PM in the Cafeteria</p>
+      </div>
+    </div>
+
+    <h2>Upcoming Events at Passport</h2>
+    {events.length === 0 ? (
+      <div class="empty-state" style="margin-top:1rem;">
+        No upcoming events are scheduled right now — check back soon.
+      </div>
+    ) : (
+      <div style="margin-top:1rem;">
+        {events.map((e) => (
+          <div class="event-row">
+            <div class="event-date" aria-hidden="true">
+              <span class="ed-day">{new Intl.DateTimeFormat('en-US', { day: 'numeric' }).format(e.data.date)}</span>
+              <span class="ed-mon">{new Intl.DateTimeFormat('en-US', { month: 'short' }).format(e.data.date)}</span>
+            </div>
+            <div class="event-body">
+              <h3>{e.data.title}</h3>
+              <p>{fullFmt.format(e.data.date)}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</Base>

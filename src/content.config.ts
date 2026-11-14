@@ -16,6 +16,7 @@ const events = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     location: z.string().optional(),
+    link: z.string().optional(),
   }),
 });
 
@@ -25,6 +26,8 @@ const staff = defineCollection({
     title: z.string(),
     role: z.string().optional(),
     photo: z.string().optional(),
+    email: z.string().optional(),
+    dept: z.string().optional(),
   }),
 });
 
@@ -33,8 +36,17 @@ const settings = defineCollection({
   schema: z.object({
     countdownDate: z.coerce.date(),
     announcement: z.string().optional(),
-    instagramUrl: z.string().url().optional(),
+    instagramUrl: z.string().optional(),
   }),
 });
 
-export const collections = { news, events, staff, settings };
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  schema: z.object({
+    title: z.string(),
+    path: z.string(),
+    updated: z.string().optional(),
+  }),
+});
+
+export const collections = { news, events, staff, settings, pages };

@@ -34,16 +34,28 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: true, time_format: false }
       - { label: Location, name: location, widget: string, required: false }
+      - { label: More-info link (optional), name: link, widget: string, required: false }
       - { label: Details, name: body, widget: markdown, required: false }
   - name: staff
     label: Faculty & Staff
     folder: src/content/staff
     create: true
     slug: "{{slug}}"
+    sortable_fields: [title]
     fields:
       - { label: Name, name: title, widget: string }
       - { label: Role, name: role, widget: string, required: false }
       - { label: Photo, name: photo, widget: image, required: false }
+      - { label: Email, name: email, widget: string, required: false }
+      - label: Department
+        name: dept
+        widget: select
+        default: Instructional Staff
+        options:
+          - Administrative Staff
+          - Instructional Staff
+          - Support Staff
+          - Extended Day Staff
       - { label: Bio, name: body, widget: markdown, required: false }
   - name: settings
     label: Site Settings

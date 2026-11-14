@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Parent SMS Opt-In" description="Opt in to receive SMS text-message updates from Passport School.">
+  <div class="page-band">
+    <div class="container">
+      <h1>Parent SMS Opt-In</h1>
+      <p>Get school updates by text message.</p>
+    </div>
+  </div>
+  <div class="container section">
+    <div class="prose" style="max-width:none;">
+      <p>
+        Passport School may use text messaging periodically to reach out to you as a parent of a
+        child attending Passport School. Please use this form to opt-in to text messaging.
+      </p>
+      <p>
+        Visit <a href="/privacy-policy/">our privacy policy</a> and
+        <a href="/terms-conditions/">terms and conditions</a>. Messaging frequency may vary. Message
+        and data rates may apply. You can opt out any time by texting STOP. For assistance, text
+        HELP or visit our website.
+      </p>
+    </div>
+    <form class="form-card" style="margin-top:1.5rem;" method="POST" action="#sms-form-endpoint" aria-label="Parent SMS opt-in form">
+      <!-- TODO (Phase 3 cutover): point action at the Formspree endpoint for the front office -->
+      <div class="field">
+        <label for="sms-name">Name <span class="req" aria-hidden="true">*</span></label>
+        <input id="sms-name" name="name" type="text" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="sms-email">Email <span class="req" aria-hidden="true">*</span></label>
+        <input id="sms-email" name="email" type="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="sms-phone">Phone Number</label>
+        <input id="sms-phone" name="phone" type="tel" autocomplete="tel" />
+      </div>
+      <div class="field checkbox-field">
+        <input id="sms-optin" name="optin" type="checkbox" required />
+        <label for="sms-optin">
+          SMS Opt-In — By checking this box, you consent to receive SMS from Passport School regarding
+          school events, schedules, information related to your child and any critical updates. You
+          may opt-out at any time by replying STOP; Reply HELP for assistance; Message and data rates
+          apply; Messaging frequency may vary.
+        </label>
+      </div>
+      <div class="field">
+        <label for="sms-questions">Any Questions?</label>
+        <textarea id="sms-questions" name="questions"></textarea>
+      </div>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+  </div>
+</Base>

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+
+const students = [
+  ['School News and Information', '/students-2/school-news-and-information/', 'Announcements and documents from the school'],
+  ['Helpful Websites', '/students-2/helpful-websites/', 'Learning resources recommended by our teachers'],
+  ['Supplies List by Grade', '/students-2/supplies-list-by-grade/', 'What to bring for the school year'],
+  ['Grading Scale', '/students-2/grading-scale/', 'How grades are calculated'],
+  ['Student Policies', '/students-2/student-policies/', 'School rules and expectations'],
+  ['Report Suspicious Activity', '/students-2/report-suspicious-activity/', 'FortifyFL and other ways to report a concern'],
+];
+---
+
+<Base title="For Students">
+  <div class="page-band">
+    <div class="container">
+      <h1>For Students</h1>
+      <p>Resources for Passport Panthers — news, learning tools, and school policies.</p>
+    </div>
+  </div>
+  <div class="container section">
+    <div class="card-grid-3 card-grid">
+      {students.map(([title, href, desc]) => (
+        <a class="card" href={href} style="text-decoration:none;display:block;">
+          <h3 style="color:var(--maroon);margin-bottom:.3em;">{title}</h3>
+          <p>{desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

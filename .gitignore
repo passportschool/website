@@ -23,5 +23,11 @@ data/export/
 *.sql
 *.sql.gz
 
+# impeccable runtime artifacts (review captures)
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/questions/
+
 # macOS
 .DS_Store

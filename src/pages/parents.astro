@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+
+const parents = [
+  ['School Calendar', '/parents-2/school-calendar/', 'OCPS calendar, school hours, and board meeting dates'],
+  ['Enrollment Information', '/parents-2/enrollment-information/', 'How to enroll your child at Passport School'],
+  ['Title I Information', '/parents-2/title-i-information/', 'Federal Title I program information and documents'],
+  ['Emergency Procedures', '/parents-2/emergency-procedures/', 'What to do in an emergency'],
+  ['Committees', '/parents-2/committees/', 'Parent committees and how to get involved'],
+  ['ADDitions and Volunteering', '/additions-and-volunteering/', 'Volunteer approval and opportunities'],
+  ['Extended Day Program', '/extended-day-program/', 'Before and after school care'],
+  ['Parent SMS Signup', '/smsoptin/', 'Opt in to school text-message updates'],
+];
+---
+
+<Base title="For Parents">
+  <div class="page-band">
+    <div class="container">
+      <h1>For Parents</h1>
+      <p>Everything you need, in one place — calendars, enrollment, and ways to get involved.</p>
+    </div>
+  </div>
+  <div class="container section">
+    <div class="card-grid-3 card-grid">
+      {parents.map(([title, href, desc]) => (
+        <a class="card" href={href} style="text-decoration:none;display:block;">
+          <h3 style="color:var(--maroon);margin-bottom:.3em;">{title}</h3>
+          <p>{desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

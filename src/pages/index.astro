@@ -1,59 +1,240 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
-
-// Phase 2 (design refresh) replaces this placeholder homepage.
-// Content here is real (migrated from the current site); presentation is deliberately minimal.
+import { Image } from 'astro:assets';
+import hero from '../assets/img/hero.jpg';
+import life1 from '../assets/img/life-1.jpg';
+import life2 from '../assets/img/life-2.jpg';
+import life3 from '../assets/img/life-3.jpg';
 
 const settings = (await getCollection('settings'))[0];
 const events = (await getCollection('events'))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .filter((e) => e.data.date.valueOf() >= Date.now() - 24 * 60 * 60 * 1000)
   .slice(0, 6);
+const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
 
-const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const dayFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric' });
+const monFmt = new Intl.DateTimeFormat('en-US', { month: 'short' });
+const fullFmt = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const countdownTarget = settings?.data.countdownDate ? fullFmt.format(settings.data.countdownDate) : null;
+
+const igPicks = [
+  '468003858_18352364545193961_8189814425083002978_nfull.webp',
+  '469588148_18354293212193961_1138744982906498246_nfull.webp',
+  '475651641_18361390495193961_6249112178681063710_nfull.webp',
+  '497487757_1192328559340008_2753501677947334802_nfull.webp',
+  '553362905_1144435954312496_362806833577550886_nfull.webp',
+  '704914338_18427776781193961_7808214145962387621_nfull.webp',
+];
 ---
 
-<Base title="Passport School">
-  <header>
-    <p><strong>Passport School</strong> — an inclusive K–8 charter school in Orlando, Florida</p>
-  </header>
-  <main id="content">
-    <h1>Our Mission</h1>
-    <p>
-      The mission of the Passport School, Inc. is to provide instruction to students in Kindergarten
-      through 8th grade based on the individual needs of children in an inclusive environment where
-      children with disabilities are educated with their non-disabled peers. The school will achieve
-      its mission through low student teacher ratios, cooperative learning, multi-sensory hands-on
-      learning, frequent assessment and extensive networking with parents, faculty, administration,
-      staff, friends and businesses within the community.
-    </p>
+<Base title="Home" description="Passport School — an inclusive K–8 charter school in Orlando, Florida. OCPS's first charter school. News, events, enrollment and parent resources.">
+  {settings?.data.announcement && (
+    <div style="background:var(--maroon-wash);border-bottom:1px solid var(--line);">
+      <div class="container" role="status" style="padding-block:.9rem;">
+        <p style="margin:0;font-weight:600;color:var(--maroon-deep);">{settings.data.announcement}</p>
+      </div>
+    </div>
+  )}
 
-    <h2>Core Philosophy</h2>
-    <p>
-      The Core Philosophy of the Passport School, Inc. is to provide an inclusive environment where
-      children can strive to be successful and learn to accept each other’s differences while working
-      together. Faculty, staff, administrators and parents will work together to provide academic and
-      social guidance.
-    </p>
+  <section class="hero" aria-labelledby="home-h">
+    <Image class="hero-photo" src={hero} alt="Students and families at Passport School" widths={[480, 768, 1200, 1600]} sizes="100vw" loading="eager" />
+    <div class="hero-content">
+      <div class="container">
+        <h1 id="home-h">Passport School</h1>
+        <p class="hero-sub">
+          An inclusive K–8 charter school in Orlando, where children of every ability learn together.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="/parents-2/enrollment-information/">Enrollment Information</a>
+          <a class="btn btn-ghost-light" href="/parents/">For Parents</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    {settings?.data.announcement && (
-      <p role="status"><strong>Announcement:</strong> {settings.data.announcement}</p>
-    )}
+  <section class="section surface" aria-labelledby="mission-h">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="mission-h">Our Mission &amp; Philosophy</h2>
+      </div>
+      <div style="display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));">
+        <div>
+          <h3>Our Mission</h3>
+          <p>
+            The mission of the Passport School, Inc. is to provide instruction to students in
+            Kindergarten through 8th grade based on the individual needs of children in an inclusive
+            environment where children with disabilities are educated with their non-disabled peers.
+            The school will achieve its mission through low student teacher ratios, cooperative
+            learning, multi-sensory hands-on learning, frequent assessment and extensive networking
+            with parents, faculty, administration, staff, friends and businesses within the community.
+          </p>
+        </div>
+        <div>
+          <h3>Core Philosophy</h3>
+          <p>
+            The Core Philosophy of the Passport School, Inc. is to provide an inclusive environment
+            where children can strive to be successful and learn to accept each other’s differences
+            while working together. Faculty, staff, administrators and parents will work together to
+            provide academic and social guidance.
+          </p>
+          <a class="btn btn-outline" href="/about-us/">About our school</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>Upcoming Events</h2>
-    <ul>
-      {events.map((e) => (
-        <li>
-          <strong>{fmt.format(e.data.date)}</strong> — {e.data.title}
-        </li>
-      ))}
-    </ul>
-  </main>
-  <footer>
-    <p>
-      <a href="https://getfortifyfl.com/" rel="noopener">FortifyFL</a> — report suspicious activity to
-      law enforcement and school officials.
-    </p>
-  </footer>
+  <section class="section" aria-labelledby="events-h">
+    <div class="container">
+      <div class="home-split" style="display:grid;gap:2.5rem;grid-template-columns:2fr 1fr;align-items:start;">
+        <div>
+          <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;">
+            <h2 id="events-h" style="margin:0;">Upcoming Events</h2>
+            <a href="/parents-2/school-calendar/" style="font-weight:600;">Full calendar →</a>
+          </div>
+          {events.length === 0 ? (
+            <div class="empty-state">
+              No upcoming events are scheduled right now. School events are published by the front
+              office — check the full calendar or follow us on Instagram for the latest.
+            </div>
+          ) : (
+            <div>
+              {events.map((e) => (
+                <div class="event-row">
+                  <div class="event-date" aria-hidden="true">
+                    <span class="ed-day">{dayFmt.format(e.data.date)}</span>
+                    <span class="ed-mon">{monFmt.format(e.data.date)}</span>
+                  </div>
+                  <div class="event-body">
+                    <h3>{e.data.title}</h3>
+                    <p>
+                      {fullFmt.format(e.data.date)}
+                      {e.data.link && (
+                        <>
+                          {' '}· <a href={e.data.link} target="_blank" rel="noopener">More information</a>
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div>
+          <div class="section-head">
+            <h2 style="font-size:1.25rem;">Latest News</h2>
+          </div>
+          {news.length === 0 ? (
+            <div class="empty-state">
+              School news is published by the front office during the school year — check back soon.
+            </div>
+          ) : (
+            <div class="card-grid" style="grid-template-columns:1fr;">
+              {news.map((n) => (
+                <article class="card">
+                  <h3>{n.data.title}</h3>
+                  <p>{fullFmt.format(n.data.date)}</p>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {countdownTarget && (
+    <section class="countdown-band section-tight" aria-label="Countdown to the last day of school">
+      <div class="container countdown-inner">
+        <p class="countdown-title">
+          Last Day of School
+          <small>{countdownTarget}</small>
+        </p>
+        <div class="cd-ticks" id="countdown" data-target={settings.data.countdownDate.toISOString()} aria-hidden="true">
+          <div class="cd-tick"><div class="cd-num" id="cd-d">–</div><div class="cd-lab">Days</div></div>
+          <div class="cd-tick"><div class="cd-num" id="cd-h">–</div><div class="cd-lab">Hours</div></div>
+          <div class="cd-tick"><div class="cd-num" id="cd-m">–</div><div class="cd-lab">Minutes</div></div>
+          <div class="cd-tick"><div class="cd-num" id="cd-s">–</div><div class="cd-lab">Seconds</div></div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section" aria-labelledby="life-h">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="life-h">Life at Passport</h2>
+        <p>Learning together — in the classroom, on the field, and everywhere in between.</p>
+      </div>
+      <div class="photo-grid">
+        <Image src={life1} alt="Passport School students learning together" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+        <Image src={life2} alt="Activities at Passport School" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+        <Image src={life3} alt="Passport School community" widths={[480, 720]} sizes="(min-width: 64rem) 33vw, 92vw" style="height:15rem;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface" aria-labelledby="ig-h">
+    <div class="container">
+      <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;">
+        <h2 id="ig-h" style="margin:0;">@passportpanthers</h2>
+        <a href="https://www.instagram.com/passportpanthers/" target="_blank" rel="noopener" style="font-weight:600;">Follow on Instagram →</a>
+      </div>
+      <div class="ig-strip">
+        {igPicks.map((file) => (
+          <a href="https://www.instagram.com/passportpanthers/" target="_blank" rel="noopener" aria-label="Passport School community photo — view on Instagram">
+            <img src={`/uploads/ig/${file}`} alt="Passport School community photo" loading="lazy" width="240" height="240" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="fortify-h">
+    <div class="container fortify">
+      <img src="/uploads/2023/03/Fortify-Florida-Logo.jpeg" alt="FortifyFL" width="120" height="38" loading="lazy" />
+      <div>
+        <h2 id="fortify-h" style="font-size:1.25rem;">FortifyFL</h2>
+        <p>
+          FortifyFL is a suspicious activity reporting tool that allows you to instantly relay
+          information to appropriate law enforcement agencies and school officials. Click the icon
+          above and follow the easy 4-step process to submit a tip. Your name and contact information
+          is always optional — just skip it to submit anonymously.
+        </p>
+        <a class="btn btn-outline" href="https://getfortifyfl.com/" target="_blank" rel="noopener">Report a tip</a>
+      </div>
+    </div>
+  </section>
 </Base>
+
+<style>
+  @media (max-width: 800px) {
+    .home-split { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script>
+  const el = document.getElementById('countdown');
+  if (el) {
+    const target = new Date(el.dataset.target || '').getTime();
+    const get = (id: string) => document.getElementById(id);
+    const tick = () => {
+      let s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+      const d = Math.floor(s / 86400); s %= 86400;
+      const h = Math.floor(s / 3600); s %= 3600;
+      const m = Math.floor(s / 60);
+      const sec = s % 60;
+      const set = (id: string, v: number) => {
+        const node = get(id);
+        if (node) node.textContent = String(v);
+      };
+      set('cd-d', d); set('cd-h', h); set('cd-m', m); set('cd-s', sec);
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+</script>

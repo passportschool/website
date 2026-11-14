@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const staff = await getCollection('staff');
+const deptOrder = ['Administrative Staff', 'Instructional Staff', 'Support Staff', 'Extended Day Staff'];
+const deptLabel: Record<string, string> = {
+  'Administrative Staff': 'Administrative Staff',
+  'Instructional Staff': 'Instructional Staff',
+  'Support Staff': 'Support Staff',
+  'Extended Day Staff': 'Extended Day Program',
+};
+const depts = deptOrder.filter((d) => staff.some((s) => (s.data.dept || 'Staff') === d));
+if (depts.length === 0 && staff.length) depts.push(staff[0].data.dept || 'Staff');
+
+const mods = import.meta.glob<{ default: ImageMetadata }>('/src/assets/staff/*.{jpg,jpeg,png,webp,avif}', { eager: true });
+function photoFor(photo?: string): ImageMetadata | null {
+  if (!photo) return null;
+  const mod = mods[photo];
+  if (mod) return mod.default;
+  const base = '/' + photo.split('/').pop();
+  const hit = Object.entries(mods).find(([k]) => k.endsWith(base));
+  return hit ? hit[1].default : null;
+}
+---
+
+<Base title="Faculty and Staff" description="Meet the faculty and staff of Passport School — an inclusive K-8 charter school in Orlando, Florida.">
+  <div class="page-band">
+    <div class="container">
+      <h1>Faculty and Staff</h1>
+      <p>The teachers and staff who make Passport School feel like family.</p>
+    </div>
+  </div>
+  <div class="container section">
+    {depts.map((dept) => (
+      <section aria-labelledby={`dept-${dept.replace(/\s+/g, '-').toLowerCase()}`} style="margin-bottom:3rem;">
+        <h2 id={`dept-${dept.replace(/\s+/g, '-').toLowerCase()}`}>{deptLabel[dept] ?? dept}</h2>
+        <div class="staff-grid">
+          {staff.filter((s) => (s.data.dept || 'Staff') === dept).map((s) => {
+            const photo = photoFor(s.data.photo);
+            return (
+              <div class="staff-card">
+                {photo ? (
+                  <Image src={photo} alt={s.data.title} widths={[240, 480]} sizes="(min-width: 74rem) 220px, 45vw" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+                ) : s.data.photo ? (
+                  <img src={s.data.photo} alt={s.data.title} loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-sm);" />
+                ) : (
+                  <div style="width:100%;aspect-ratio:4/5;border-radius:var(--radius);background:var(--maroon-wash);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-size:2.2rem;font-weight:700;color:var(--maroon);">{s.data.title.split(' ').map((w) => w[0]).slice(0, 2).join('')}</span>
+                  </div>
+                )}
+                <h3>{s.data.title}</h3>
+                {s.data.role && <p class="staff-role">{s.data.role}</p>}
+                {s.data.email && <a class="staff-mail" href={`mailto:${s.data.email}`}>{s.data.email}</a>}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>

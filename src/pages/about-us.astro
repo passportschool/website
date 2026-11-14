@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About Us" description="About Passport School — contact information, school hours, location, and how to reach the front office.">
+  <div class="page-band">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>Passport School — OCPS's first charter school, serving Orlando since 1999.</p>
+    </div>
+  </div>
+  <div class="container section">
+    <div style="display:grid;gap:2.5rem;grid-template-columns:1.1fr 1fr;align-items:start;" class="about-split">
+      <div>
+        <h2>Location &amp; Contact Info</h2>
+        <p style="font-size:1.1rem;">
+          <strong>Passport School</strong><br />
+          5221 Curry Ford Road<br />
+          Orlando, Florida 32812
+        </p>
+        <p>
+          Phone: <a href="tel:+14076589900">407-658-9900</a><br />
+          Email: <a href="mailto:office@passportcharter.org">office@passportcharter.org</a>
+        </p>
+        <h3>School Hours</h3>
+        <p>Monday through Friday · 8:25 AM – 2:30 PM</p>
+        <h3>Public Records Requests</h3>
+        <p>
+          For any type of public records request, you must send an email to the principal at
+          <a href="mailto:ogarcia@passportcharter.org">ogarcia@passportcharter.org</a>, or via mail at
+          5221 Curry Ford Rd., Orlando, Florida 32812.
+        </p>
+        <h2 style="margin-top:2.5rem;">Contact Us</h2>
+        <form class="form-card" method="POST" action="#contact-form-endpoint" aria-label="Contact Passport School">
+          <!-- TODO (Phase 3 cutover): point action at the Formspree endpoint for office@passportcharter.org -->
+          <div class="field">
+            <label for="cf-name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="cf-message" name="message" required></textarea>
+          </div>
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-note">Messages go to the school office at office@passportcharter.org.</p>
+        </form>
+      </div>
+      <div>
+        <div class="map-frame">
+          <iframe
+            title="Map — Passport School, 5221 Curry Ford Road, Orlando, FL 32812"
+            src="https://maps.google.com/maps?q=Passport%20School%2C%205221%20Curry%20Ford%20Rd%2C%20Orlando%2C%20FL%2032812&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+        <h2 style="margin-top:2.5rem;">Welcome to Passport</h2>
+        <div class="map-frame" style="height:auto;">
+          <iframe
+            title="Welcome to Passport School (video)"
+            src="https://www.youtube-nocookie.com/embed/MewSeO6xeIc"
+            loading="lazy"
+            style="width:100%;aspect-ratio:16/9;border:0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  @media (max-width: 800px) {
+    .about-split { grid-template-columns: 1fr !important; }
+  }
+</style>
