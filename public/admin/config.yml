@@ -5,7 +5,7 @@ site_url: https://www.passportcharter.org
 locale: en
 backend:
   name: github
-  repo: SCHOOL-ORG-PLACEHOLDER/passportschool
+  repo: passportschool/website
   branch: main
 media_folder: public/uploads
 public_folder: /uploads

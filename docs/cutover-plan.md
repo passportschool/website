@@ -1,5 +1,7 @@
 # Cutover Plan — Phase 3
 
+**Status update (2026-11-14, later):** GitHub account restored. **Staging-first track adopted**: repo → Cloudflare Pages Git integration → staging at `*.pages.dev` → Sveltia CMS wired and staff editing tested → demo to the school → only then production. **BLOCKED: no Hover access** — the nameserver flip and domain transfer both require it; the school must identify who holds the Hover account (their domain since 1998; it is actively renewed — expires June 2029). Interim production option that needs no Hover: serve the static build from the Lightsail Apache (stop PHP-FPM/MySQL, swap docroot — the vulnerable runtime goes dark) until Hover access resolves and the Cloudflare cutover can run.
+
 **Goal:** move passportcharter.org to school-owned Cloudflare hosting with zero mail disruption, independent of any Git-host decision.
 
 ## The live DNS zone (audited 2026-11-14 via dns.google)
